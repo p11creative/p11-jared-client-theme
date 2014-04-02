@@ -1,0 +1,21 @@
+
+@font-face {
+font-family: 'Aqua';
+src: url('aqua.eot');
+src: url('aqua.eot?#iefix') format('eot'),
+url('aqua.woff') format('woff'),
+url('aqua.ttf') format('truetype'),
+url('aqua.svg') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+@font-face {
+font-family: 'Aqua';
+src: url('aqua.svg') format('svg');
+
+}
+}
+
+

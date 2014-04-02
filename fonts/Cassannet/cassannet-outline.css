@@ -1,0 +1,16 @@
+@font-face {
+font-family: 'Cassannet Outline';
+src: url('cassannet-outline.eot');
+src: url('cassannet-outline.eot?#iefix') format('eot'),
+url('cassannet-outline.woff') format('woff'),
+url('cassannet-outline.ttf') format('truetype'),
+url('cassannet-outline.svg#NevisBold') format('svg');
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+@font-face {
+font-family: 'Cassannet Outline';
+src: url('cassannet-outline.svg#NevisBold') format('svg');
+
+}
+}

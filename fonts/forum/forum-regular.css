@@ -1,0 +1,17 @@
+
+@font-face {
+font-family: 'Forum Regular';
+src: url('Forum-Regular.eot');
+src: url('Forum-Regular.eot?#iefix') format('eot'),
+url('Forum-Regular.woff') format('woff'),
+url('Forum-Regular.ttf') format('truetype'),
+url('Forum-Regular.svg') format('svg');
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+@font-face {
+font-family: 'Forum Regular';
+src: url('Forum-Regular.svg') format('svg');
+
+}
+}

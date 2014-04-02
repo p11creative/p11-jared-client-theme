@@ -1,0 +1,522 @@
+/*
+Theme Name: Client
+Theme URI: http://p11.com/
+Author: p11 Creative
+Author URI: http://p11.com/
+Description: Our Client framework provides us with the flexability and power to create amazing websites for our clients. It's really all about them, thus we call this the "Client" theme. Who else would it be for?
+Version: 0.4.0
+License: Attribution-NonCommercial-NoDerivs 
+License URI: https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+The Client Theme is based off of the Options Framework, HTML5 Boilerplate, and the Blank Slate 4.0 theme. Though we can't stop you from distributing our theme, we can say it makes us all sad pandas. At least give us credit, and if you make millions off of our work somehow, we expect a massage on you.
+*/
+
+
+/* ----- [ COLORZ ] ----- //
+
+The options should take care of this...
+
+// ----- __________ -----*/
+
+
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+  margin-right:1em;
+}
+
+/*```````````````````````````//
+//			GLOBALS			 //
+//___________________________*/
+
+*, *:before, *:after {
+	border:0;
+	border-collapse:collapse;
+	margin:0;
+	padding:0;
+	line-height:normal;
+	-webkit-box-sizing:border-box;
+	   -moz-box-sizing:border-box;	
+	    -ms-box-sizing:border-box;
+	     -o-box-sizing:border-box;
+	        box-sizing:border-box;
+	-webkit-transition:all .5s;
+	   -moz-transition:all .5s;
+		-ms-transition:all .5s;
+	     -o-transition:all .5s;
+	 	    transition:all .5s;	
+}
+
+body {
+	font-size:1em;
+	font-weight:normal;
+	zoom:1;
+}
+
+html, body {
+	
+}
+
+body, p, span {
+	font-family:'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, nav, nav a, .cycle-overlay {
+	font-family:'Open Sans Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: normal;
+}
+
+h1, h2 {
+	margin-bottom: 0.25em;
+	padding-bottom: 0.25em;	
+}
+
+a {
+	text-decoration:none;
+  	position:relative;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+a:active {
+ 	top:1px; 
+}
+
+input {
+
+}
+
+input:hover {
+	
+}
+
+input[type="submit"] {
+	position:relative;	
+}
+
+input[type="submit"]:hover {
+	
+}
+
+input[type="submit"]:active {
+
+}
+
+textarea {
+	resize:none;
+}
+
+textarea:hover {
+	
+}
+
+input:focus, textarea:focus {
+	
+}
+
+p {
+	line-height:1.5em;
+	margin-bottom: 0.5em;
+	clear:both;
+	width:100%;
+}
+
+ul, li, ol {
+	list-style:none;
+	list-style-type:none;
+}
+
+header, footer, section {
+	clear:both;
+	width:100%;
+}
+section {
+	display:inline-block;
+}
+
+.full {
+	width:100%;
+}
+
+.half {
+	width:50%;
+}
+
+.third {
+	width:33.33%;
+}
+
+.twothird {
+	width:66.66%;
+}
+
+.fourth {
+	width:25%;
+}
+
+.threefourth {
+	width:75%;
+}
+
+.left {
+	float:left;
+}
+
+.right {
+	float:right;
+}
+
+.center {
+	margin:0 auto;
+}
+
+.tleft {
+	text-align: left;
+}
+
+.tright {
+	text-align: right;
+}
+
+.tcenter {
+	text-align: center;
+}
+
+/*```````````````````````````//
+//			PAGE			 //
+//___________________________*/
+
+#wrapper {
+	width:95%;
+	max-width:1200px;
+	margin: 20px auto;
+	box-shadow:0 0 5px rgba(0,0,0,.4);
+	background:#fff;
+	display:table;
+}
+
+.wrapper {
+	width:100%;
+	max-width:1200px;
+	margin: 0 auto;
+}
+
+#container {
+
+}
+
+#page-container {
+
+}
+
+.page-container {
+
+}
+
+
+/*```````````````````````````//
+//			HEADER			 //
+//___________________________*/
+
+
+header {
+	height:auto;
+//	border-top-style:solid;
+//	border-top-width:5px;
+	background:#fff;
+}
+
+#header-main {
+	float:left;
+	height:6em;
+	overflow:hidden;
+}
+
+#logo img {
+	max-width: 100%;
+	height: 5em;
+	width: auto;
+	margin:0.5em;
+}
+
+#logo {
+	float:left;
+}
+
+#headcopy {
+	width:100%;
+	color:#fff;
+	font-size:0.9em;
+	padding:0.5em 0.5em 0.25em;
+}
+
+#headcopy p {
+	color:#fff;
+}
+
+/*```````````````````````````//
+//			MENU			 //
+//___________________________*/
+
+
+#topnav {
+	float:right;
+}
+
+header nav {
+	float:right;
+}
+
+header nav ul {
+
+}
+
+header nav ul li {
+	float:left;
+	padding:2em 0em;
+}
+
+header nav ul li a {
+	letter-spacing: 0.5px;
+	font-size:1.1em;
+	text-transform: uppercase;
+	padding:2em 1em;
+}
+
+header nav ul li a:hover, header nav ul li.current_page_item a {
+	color:#fff!important;
+	text-decoration: none;
+}
+
+
+/*```````````````````````````//
+//			INDEX			 //
+//___________________________*/
+
+
+#featured-img, #slider {
+	width:100%;
+	max-height:650px;
+	overflow:hidden;
+}
+
+#slider * {
+	transition:none;
+	-webkit-transition:none;
+}
+
+#featured-img img, #slider img {
+	width:100%;
+	height:auto;
+	display: block; 
+}
+
+section.home-content {
+	min-height:300px;
+//	border-top-style: solid;
+//	border-top-width: 5px;
+}
+
+.cycle-overlay {
+	position: absolute;
+	width: auto;
+	padding:0.5em 1em;
+	bottom: 12%;
+	left: 5%;
+	z-index: 800;
+	color:#fff;
+	opacity:0.9;
+	filter:alpha(opacity=9);
+	text-align: center;
+	font-weight: 200;
+	letter-spacing: 0.5px;
+	font-size: 1.5em;
+}
+
+#progress {
+	height: 5px;
+	position: absolute;
+	bottom: 0px;
+	z-index: 500;
+	width:0%;
+}
+
+.home-feature {
+	padding:1em 2em;
+	margin-bottom:1em;
+}
+
+.home-feature h1 {
+	font-size:1.6em;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.home-feature p {
+	font-size:1em;
+}
+
+.home-feature .featured-holder {
+	width:65%;
+	border-radius:50%;
+	height:auto;
+	margin: 1em auto;
+	overflow: hidden;
+	position:relative;
+	display:block;
+	border-style: solid;
+	border-width:3px;
+}
+
+.featured-holder .featured-overlay {
+	opacity:0.4;
+	filter:alpha(opacity=40);
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	border-radius: 200px;
+	border-width:10px;
+	border-style:solid;
+	display:inline-block;
+}
+
+.home-feature .featured-holder:hover > .featured-overlay {
+	opacity: 0;
+	filter:alpha(opacity=0);
+	border-width:50px;
+}
+
+
+.home-feature .featured-holder img {
+	width:100%;
+	height:auto;
+	display: block;
+}
+
+.middle-feature {
+	 border-left-width:1px;
+	 border-left-style: solid;
+	 border-right-width:1px;
+	 border-right-style:solid;
+}
+
+.home-subfeature {
+	border-top-style: solid;
+	border-top-width:5px;
+}
+
+.home-subfeature p, .home-subfeature h1 {
+	padding: 0.5em 2em;
+}
+
+.home-trailer {
+	padding: 2em;
+	border-top-style: solid;
+	border-top-width:5px;
+}
+
+.home-subfeature {
+	overflow:hidden;
+	background:url(http://placekitten.com/1200/900/) no-repeat center center scroll transparent; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/*```````````````````````````//
+//			PAGE			 //
+//___________________________*/
+
+.entry-content {
+	padding:0.5em 2em;
+	border-right-width: 1px;
+	border-right-style: solid;
+	margin:1em 0;
+	float:left;
+}
+
+article li {
+	margin-left: 1.5em;
+	padding: 0.25em 0;
+	list-style: square;
+	list-style-type: square;
+	width:90%;
+}
+
+#featured-img.page {
+	position:relative;
+	border-bottom-style: solid;
+	border-bottom-width: 5px;
+	max-height: 550px;
+}
+
+#featured-img.page h1.entry-title {
+	position: absolute;
+	bottom: 1em;
+	left: 1em;
+	opacity: 0.8;
+	filter:alpha(opacity=80);
+	padding: 0.25em 0.5em;
+	color: #FFF;
+	font-size: 2em;
+	letter-spacing: 0.5px;
+}
+
+#sidebar {
+	float:right;
+	width:25%;
+	padding:1.5em 2em;
+//	border-top-style: solid;
+//	border-top-width:5px;
+}
+
+#content.page {
+
+}
+
+/*```````````````````````````//
+//		FLOOR PLAN			 //
+//___________________________*/
+
+
+
+
+
+
+/*```````````````````````````//
+//			BLOG			 //
+//___________________________*/
+
+
+
+
+
+
+/*```````````````````````````//
+//			FOOTER			 //
+//___________________________*/
+
+footer {
+	padding:1em 0.5em;
+	float:left;
+	color:#fff;
+	background:transparent;
+	font-size: 0.8em;
+	font-weight: 200;
+	letter-spacing: 0.5px;
+
+}
+
+footer.wrapperfix {
+	position:relative;
+	top:-2em;
+	text-shadow: 0 0 2px #000;
+}
+
+
+

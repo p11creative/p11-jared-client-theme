@@ -1,0 +1,16 @@
+@font-face {
+font-family: 'Fanwood Italic';
+src: url('fanwood_italic-webfont.eot');
+src: url('fanwood_italic-webfont.eot?#iefix') format('eot'),
+url('fanwood_italic-webfont.woff') format('woff'),
+url('fanwood_italic-webfont.ttf') format('truetype'),
+url('fanwood_italic-webfont.svg#NevisBold') format('svg');
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+@font-face {
+font-family: 'Fanwood Italic';
+src: url('fanwood_italic-webfont.svg#NevisBold') format('svg');
+
+}
+}

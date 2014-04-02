@@ -1,0 +1,16 @@
+@font-face {
+font-family: 'NevisBold';
+src: url('nevis.eot');
+src: url('nevis.eot?#iefix') format('eot'),
+url('nevis.woff') format('woff'),
+url('nevis.ttf') format('truetype'),
+url('nevis.svg#NevisBold') format('svg');
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+@font-face {
+font-family: 'NevisBold';
+src: url('nevis.svg#NevisBold') format('svg');
+
+}
+}
