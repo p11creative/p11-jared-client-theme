@@ -194,6 +194,6 @@ if ( $enable_ss ) { ?>
   </div>
 </section>
 
-
+ 
 
 <?php get_footer(); ?>

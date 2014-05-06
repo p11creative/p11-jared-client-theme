@@ -103,6 +103,204 @@ return $count;
 }
 
 
+
+/* ---- CUSTOM META BOX FOR GALLERIES ---- */
+
+
+// Little function to return a custom field value
+function wpshed_get_custom_field( $value ) {
+    global $post;
+
+    $custom_field = get_post_meta( $post->ID, $value, true );
+    if ( !empty( $custom_field ) )
+        return is_array( $custom_field ) ? stripslashes_deep( $custom_field ) : stripslashes( wp_kses_decode_entities( $custom_field ) );
+
+    return false;
+}
+
+// Only shows meta box on gallery page
+$post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
+$template_file = get_post_meta($post_id,'_wp_page_template',TRUE);
+  // check for a template type
+  if ($template_file == 'page-gallery.php') {
+
+// Register the Metabox
+function wpshed_add_custom_meta_box() {
+    add_meta_box( 'wpshed-meta-box', 'Flickr Gallery', 'wpshed_meta_box_output', 'page', 'normal', 'high' );
+}
+add_action( 'add_meta_boxes', 'wpshed_add_custom_meta_box' );
+
+// Output the Metabox
+function wpshed_meta_box_output( $post ) {
+    // create a nonce field
+    wp_nonce_field( 'my_wpshed_meta_box_nonce', 'wpshed_meta_box_nonce' ); ?>
+    
+    <p>
+        <label for="galset">Flickr Set ID:</label><br />
+        <input type="text" name="galset" id="galset" value="<?php echo wpshed_get_custom_field( 'galset' ); ?>" size="50" />
+    </p>
+
+    <p>Galleries are ran through <a href="http://www.flickr.com/" targget="_blank">Flickr</a> photo sets. Create your set and then retreive the ID by navigating to the set's page, and then copying it's ID from the URL. The URL should be structured something like this:
+    <blockquote>https://www.flickr.com/photos/{user}/sets/{set ID}/</blockquote>
+    </p>
+    
+    <?php
+}
+
+// Save the Metabox values
+function wpshed_meta_box_save( $post_id ) {
+    // Stop the script when doing autosave
+    if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+
+    // Verify the nonce. If insn't there, stop the script
+    if( !isset( $_POST['wpshed_meta_box_nonce'] ) || !wp_verify_nonce( $_POST['wpshed_meta_box_nonce'], 'my_wpshed_meta_box_nonce' ) ) return;
+
+    // Stop the script if the user does not have edit permissions
+    if( !current_user_can( 'edit_post' ) ) return;
+
+    // Save the textfield
+    if( isset( $_POST['galset'] ) )
+        update_post_meta( $post_id, 'galset', esc_attr( $_POST['galset'] ) );
+
+    // Save the textarea
+    if( isset( $_POST['galuser'] ) )
+        update_post_meta( $post_id, 'galuser', esc_attr( $_POST['galuser'] ) );
+}
+add_action( 'save_post', 'wpshed_meta_box_save' );
+
+}
+
+
+
+/* ---- CUSTOM POST TYPE FOR FLOOR PLANS ---- */
+
+
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+    register_post_type( 'floor-plan',
+        array(
+            'labels' => array(
+                'name' => __( 'Floor Plans' ),
+                'singular_name' => __( 'Floor Plan' ),
+                'menu_name' => __( 'Floor Plans' ),
+                'name_admin_bar' => __( 'Floor Plan' ),
+                'add_new' => __( 'Add New', 'Floor Plan' ),
+                'edit_item' => __( 'Edit Floor Plan' ),
+                'new_item' => __( 'New Floor Plan' ),
+                'view_item' => __( 'View Floor Plan' )
+            ),
+        'public' => true,
+        'has_archive' => true,
+        'menu_position' => 20,
+        'menu_icon' => 'dashicons-admin-home',
+        'hierarchical' => false,
+        'supports' => array( 'title', 'thumbnail', 'editor' )
+        )
+    );
+}
+
+// Register the Metabox
+function add_custom_meta_box() {
+    add_meta_box( 'fp-meta-box', 
+        'Floor Plan Details', 
+        'meta_box_output', 
+        'floor-plan', 'normal', 'high' );
+}
+add_action( 'add_meta_boxes', 'add_custom_meta_box' );
+
+// Output the Metabox
+function meta_box_output( $post ) {
+    // create a nonce field
+    wp_nonce_field( 'my_meta_box_nonce', 'meta_box_nonce' ); ?>
+
+<div class="inside">
+    <table class="form-table">
+
+        <tr valign="top">
+            <th scope="row"><label for="sqft"><?php _e('Square Feet', 'sqft'); ?></label></th>
+            <td><input type="text" id="sqft" name="sqft" value="<?php echo wpshed_get_custom_field( 'sqft' ); ?>" /></td>
+        </tr>
+
+        <tr valign="top">
+            <th scope="row"><label for="beds"><?php _e('Bedrooms', 'beds'); ?></label></th>
+        <td><input type="text" id="beds" name="beds" value="<?php echo wpshed_get_custom_field( 'beds' ); ?>" /></td>
+        </tr>
+
+        <tr valign="top">
+            <th scope="row"><label for="baths"><?php _e('Bathrooms', 'baths'); ?></label></th>
+        <td><input type="text" id="baths" name="baths" value="<?php echo wpshed_get_custom_field( 'baths' ); ?>" /></td>
+        </tr>
+
+        <tr valign="top">
+            <th scope="row"><label for="mtitle"><?php _e('Meta Title', 'mtitle'); ?></label></th>
+            <td><input type="text" id="mtitle" maxlength="70" name="mtitle" value="<?php echo wpshed_get_custom_field( 'mtitle' ); ?>" style="width:100%;" /></td>
+        </tr>
+
+        <tr valign="top">
+            <th scope="row"><label for="mdesc"><?php _e('Meta Description', 'mdesc'); ?></label></th>
+            <td><input type="text" id="mdesc" maxlength="200" name="mdesc" value="<?php echo wpshed_get_custom_field( 'mdesc' ); ?>" style="width:100%;" /></td>
+        </tr>
+
+        <tr valign="top">
+            <th scope="row"><label for="reverse"><?php _e('Has Reverse Plan', 'reverse'); ?></label></th>
+            <td>OFF <input type="range" name="reverse" id="reverse" min="1" max="2" value="<?php echo wpshed_get_custom_field( 'reverse' ); ?>" style="width:50px;" /> ON</td>
+        </tr>
+
+    </table>
+</div>
+<?php
+}
+
+// Save the Metabox values
+function meta_box_save( $post_id ) {
+    // Stop the script when doing autosave
+    if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+
+    // Verify the nonce. If insn't there, stop the script
+    if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'my_meta_box_nonce' ) ) return;
+
+    // Stop the script if the user does not have edit permissions
+    if( !current_user_can( 'edit_post' ) ) return;
+
+    if( isset( $_POST['sqft'] ) )
+        update_post_meta( $post_id, 'sqft', esc_attr( $_POST['sqft'] ) );
+
+    if( isset( $_POST['beds'] ) )
+        update_post_meta( $post_id, 'beds', esc_attr( $_POST['beds'] ) );
+
+    if( isset( $_POST['baths'] ) )
+        update_post_meta( $post_id, 'baths', esc_attr( $_POST['baths'] ) );
+
+    if( isset( $_POST['mtitle'] ) )
+        update_post_meta( $post_id, 'mtitle', esc_attr( $_POST['mtitle'] ) );
+
+    if( isset( $_POST['mdesc'] ) )
+        update_post_meta( $post_id, 'mdesc', esc_attr( $_POST['mdesc'] ) );
+
+    if( isset( $_POST['reverse'] ) )
+        update_post_meta( $post_id, 'reverse', esc_attr( $_POST['reverse'] ) );
+}
+
+add_action( 'save_post', 'meta_box_save' );
+
+
+/* --------------------------- */
+
+include_once('inc/multi-post-thumbnails.php');
+
+if (class_exists('MultiPostThumbnails')) {
+
+new MultiPostThumbnails(array(
+'label' => 'Reverse Image',
+'id' => 'secondary-image',
+'post_type' => 'floor-plan'
+ ) );
+
+ }
+
+
+
+
 define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/inc/' );
 require_once dirname( __FILE__ ) . '/inc/options-framework.php';
 

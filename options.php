@@ -86,6 +86,8 @@ function optionsframework_options() {
 		'std' => '1',
 		'type' => 'checkbox');
 
+	/* Don't really need this...
+
 	$options[] = array(
 		'name' => "Sidebar Position",
 		'desc' => "Select weather to use a sidebar and where it should be located.",
@@ -96,7 +98,7 @@ function optionsframework_options() {
 			'1col-fixed' => $imagepath . '1col.png',
 			'2c-l-fixed' => $imagepath . '2cl.png',
 			'2c-r-fixed' => $imagepath . '2cr.png')
-	);
+	); */
 
 	$options[] = array(
 		'name' => __('', 'options_framework_theme'),

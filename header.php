@@ -7,7 +7,6 @@
 <link rel="shortcut icon" href="<?php echo of_get_option( 'favicon', 'no entry' ); ?>" />
 
 <!-- FONT IMPORTS -->
-<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/fonts/entypo/entypo.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
 
@@ -17,10 +16,12 @@
 <!-- STYLESHEET -->
 <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_uri(); ?>" />
 
+<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/fonts/entypo/entypo.css" />
+
 <?php wp_head(); ?> <?php //jquery is loaded in wp_head() ?>
 
 <script src="<?php echo get_template_directory_uri(); ?>/js/cycle2.min.js" type="text/javascript" language="javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/functions.js" type="text/javascript" language="javascript"></script>
+
 
 <?php // theme colors
 

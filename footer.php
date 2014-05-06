@@ -23,9 +23,9 @@ echo '</div>';
   </div>
 </footer>
 
-
-
-
 <?php wp_footer(); ?>
+
+<script src="<?php echo get_template_directory_uri(); ?>/js/functions.js" type="text/javascript" language="javascript"></script>
+
 </body>
 </html>
